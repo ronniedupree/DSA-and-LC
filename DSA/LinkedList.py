@@ -9,6 +9,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = self.head
 
     # Method to add a node at begin of LL
     def insert_at_begin(self, data):
@@ -44,19 +45,17 @@ class LinkedList:
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
-            return
-
-        current_node = self.head
-        while current_node.next:
-            current_node = current_node.next
-
-        current_node.next = new_node
+        elif self.tail is not None:
+            self.tail.next = new_node
+            self.tail = new_node
+        else:
+            self.head.next = new_node
+            self.tail = new_node
 
     # Update node of a linked list at given position
     def update_node(self, val, index):
         current_node = self.head
         position = 0
-
         if position == index:
             current_node.data = val
         else:
@@ -77,7 +76,6 @@ class LinkedList:
 
     # Method to remove last node of linked list
     def remove_last_node(self):
-
         if self.head is None:
             return
 
