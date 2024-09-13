@@ -24,11 +24,12 @@ class DynamicArray:
 
     # Remove the last element in the array
     def popback(self) -> int:
+        pop_num = self.arr[self.length-1]
         if self.length > 0:
             # soft delete the last element
             self.length -= 1
         # return the popped element
-        return self.arr[self.length]
+        return pop_num
 
     def resize(self) -> None:
         # Create new array of double capacity
